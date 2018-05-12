@@ -1,4 +1,4 @@
-# laravel+bbs论坛项目
+# zust校园论坛
 
 ## 功能如下
 
