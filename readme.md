@@ -79,18 +79,19 @@ echo "192.168.10.10   zustbbs.test" | sudo tee -a /etc/hosts
 
 <li> 安装 Laravel Mix</li>
 
-<code>yarn install</code>
+<pre><code>yarn install</code></pre>
 <li>编译前端内容</li>
-</ol>
-// 运行所有 Mix 任务...
-<code>npm run dev</code>
 
-// 运行所有 Mix 任务并缩小输出..
-<code>npm run production</code>
+ 运行所有 Mix 任务...
+<pre><code>npm run dev</code></pre>
+
+ 运行所有 Mix 任务并缩小输出..
+<pre><code>npm run production</code></pre>
 <li> 监控修改并自动编译</li>
 
-<code>npm run watch</code>
+<pre><code>npm run watch</code></pre>
 
 // 在某些环境中，当文件更改时，Webpack 不会更新。
 如果系统出现这种情况，请考虑使用 watch-poll 命令：
-<code>npm run watch-poll</code>
+<pre><code>npm run watch-poll</code></pre>
+</ol>
