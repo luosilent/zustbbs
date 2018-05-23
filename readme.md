@@ -73,20 +73,18 @@ cp .env.example .env
 
 直接去官网 https://nodejs.org/en/ 下载安装最新版本。
 
-<li> 安装 Yarn</li>
+<li>安装 Yarn</li>
 
 请按照最新版本的 Yarn —— http://yarnpkg.cn/zh-Hans/docs/install
 
-<li> 安装 Laravel Mix</li>
+<li>安装 Laravel Mix</li>
 
     yarn install
 <li>编译前端内容</li>
-
- 运行所有 Mix 任务...
+运行所有 Mix 任务...
  
     npm run dev
-
- 运行所有 Mix 任务并缩小输出..
+运行所有 Mix 任务并缩小输出..
  
     npm run production
 <li>监控修改并自动编译</li></ol>
