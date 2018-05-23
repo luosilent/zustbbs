@@ -85,11 +85,12 @@ echo "192.168.10.10   zustbbs.test" | sudo tee -a /etc/hosts
 
  运行所有 Mix 任务并缩小输出..
 <pre><code>npm run production</code></pre>
-<li> 监控修改并自动编译</li></ol>
+<li>监控修改并自动编译</li></ol>
 
     npm run watch
 
 在某些环境中，当文件更改时，Webpack 不会更新。
 如果系统出现这种情况，请考虑使用 watch-poll 命令：
+
     npm run watch-poll
 
