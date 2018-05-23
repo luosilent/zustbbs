@@ -1,21 +1,25 @@
-# zust校园论坛
+# zust校园论坛 
+
 <p>模仿laravel-china系列教程做的项目</p>
+
 ## 功能如下
-<ul>用户认证 —— 注册、登录、退出；</ul>
-<ul>个人中心 —— 用户个人中心，编辑资料；</ul>
-<ul>用户授权 —— 作者才能删除自己的内容；</ul>
-<ul>上传图片 —— 修改头像和编辑话题时候上传图片；</ul>
-<ul>表单验证 —— 使用表单验证类；</ul>
-<ul>文章发布时自动 Slug 翻译，支持使用队列方式以提高响应；</ul>
-<ul>站点『活跃用户』计算，一小时计算一次；</ul>
-<ul>多角色权限管理 —— 允许站长，管理员权限的存在；</ul>
-<ul>后台管理 —— 后台数据模型管理；</ul>
-<ul>邮件通知 —— 发送新回复邮件通知，队列发送邮件；</ul>
-<ul>站内通知 —— 话题有新回复；</ul>
-<ul>自定义 Artisan 命令行 —— 自定义活跃用户计算命令；</ul>
-<ul>自定义 Trait —— 活跃用户的业务逻辑实现；</ul>
-<ul>自定义中间件 —— 记录用户的最后登录时间；</ul>
-<ul>XSS 安全防御；</ul>
+<ul>
+<li>用户认证 —— 注册、登录、退出；</li>
+<li>个人中心 —— 用户个人中心，编辑资料；</li>
+<li>用户授权 —— 作者才能删除自己的内容；</li>
+<li>上传图片 —— 修改头像和编辑话题时候上传图片；</li>
+<li>表单验证 —— 使用表单验证类；</li>
+<li>文章发布时自动 Slug 翻译，支持使用队列方式以提高响应；</li>
+<li>站点『活跃用户』计算，一小时计算一次；</li>
+<li>多角色权限管理 —— 允许站长，管理员权限的存在；</li>
+<li>后台管理 —— 后台数据模型管理；</li>
+<li>邮件通知 —— 发送新回复邮件通知，队列发送邮件；</li>
+<li>站内通知 —— 话题有新回复；</li>
+<li>自定义 Artisan 命令行 —— 自定义活跃用户计算命令；</li>
+<li>自定义 Trait —— 活跃用户的业务逻辑实现；</li>
+<li>自定义中间件 —— 记录用户的最后登录时间；</li>
+<li>XSS 安全防御；</li>
+</ul>
 
 ## 克隆源代码
 ### 克隆 larabbs 源代码到本地：
@@ -62,28 +66,31 @@ $ php artisan migrate --seed
 
 ### 配置 hosts 文件
 echo "192.168.10.10   zustbbs.test" | sudo tee -a /etc/hosts
-前端框架安装
-1). 安装 node.js
+
+### 前端框架安装
+<ol> 
+<li>安装 node.js</li>
 
 直接去官网 https://nodejs.org/en/ 下载安装最新版本。
 
-2). 安装 Yarn
+<li> 安装 Yarn</li>
 
 请按照最新版本的 Yarn —— http://yarnpkg.cn/zh-Hans/docs/install
 
-3). 安装 Laravel Mix
+<li> 安装 Laravel Mix</li>
 
-yarn install
-4). 编译前端内容
-
+<code>yarn install</code>
+<li>编译前端内容</li>
+</ol>
 // 运行所有 Mix 任务...
-npm run dev
+<code>npm run dev</code>
 
 // 运行所有 Mix 任务并缩小输出..
-npm run production
-5). 监控修改并自动编译
+<code>npm run production</code>
+<li> 监控修改并自动编译</li>
 
-npm run watch
+<code>npm run watch</code>
 
-// 在某些环境中，当文件更改时，Webpack 不会更新。如果系统出现这种情况，请考虑使用 watch-poll 命令：
-npm run watch-poll
+// 在某些环境中，当文件更改时，Webpack 不会更新。
+如果系统出现这种情况，请考虑使用 watch-poll 命令：
+<code>npm run watch-poll</code>
