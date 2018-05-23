@@ -56,7 +56,7 @@ cp .env.example .env
 你可以根据情况修改 .env 文件里的内容，如数据库连接、缓存、邮件设置等。
 
 ### 生成秘钥
-php artisan key:generate
+    php artisan key:generate
 ### 生成数据表及生成测试数据
 在 Homestead 的网站根目录下运行以下命令
 
@@ -64,7 +64,8 @@ php artisan key:generate
 初始的用户角色权限已使用数据迁移生成。
 
 ### 配置 hosts 文件
-echo "192.168.10.10   zustbbs.test" | sudo tee -a /etc/hosts
+
+    echo "192.168.10.10   zustbbs.test" | sudo tee -a /etc/hosts
 
 ### 前端框架安装
 <ol> 
@@ -77,14 +78,17 @@ echo "192.168.10.10   zustbbs.test" | sudo tee -a /etc/hosts
 请按照最新版本的 Yarn —— http://yarnpkg.cn/zh-Hans/docs/install
 
 <li> 安装 Laravel Mix</li>
+
     yarn install
 <li>编译前端内容</li>
 
  运行所有 Mix 任务...
+ 
     npm run dev
 
  运行所有 Mix 任务并缩小输出..
-<pre><code>npm run production</code></pre>
+ 
+    npm run production
 <li>监控修改并自动编译</li></ol>
 
     npm run watch
