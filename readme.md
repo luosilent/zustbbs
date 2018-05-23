@@ -1,72 +1,89 @@
 # zust校园论坛
-
+<p>模仿laravel-china系列教程做的项目</p>
 ## 功能如下
+用户认证 —— 注册、登录、退出；
+个人中心 —— 用户个人中心，编辑资料；
+用户授权 —— 作者才能删除自己的内容；
+上传图片 —— 修改头像和编辑话题时候上传图片；
+表单验证 —— 使用表单验证类；
+文章发布时自动 Slug 翻译，支持使用队列方式以提高响应；
+站点『活跃用户』计算，一小时计算一次；
+多角色权限管理 —— 允许站长，管理员权限的存在；
+后台管理 —— 后台数据模型管理；
+邮件通知 —— 发送新回复邮件通知，队列发送邮件；
+站内通知 —— 话题有新回复；
+自定义 Artisan 命令行 —— 自定义活跃用户计算命令；
+自定义 Trait —— 活跃用户的业务逻辑实现；
+自定义中间件 —— 记录用户的最后登录时间；
+XSS 安全防御；
 
-### 分三部分
+## 克隆源代码
+### 克隆 larabbs 源代码到本地：
 
-<ol><li>角色</li>
-<li>信息</li>
-<li>动作</li>
-</ol>
+<pre><code>git clone git@github.com:luosilent/zustbbs.git</code></pre>
+ 配置本地的 Homestead 环境
+ 运行以下命令编辑 Homestead.yaml 文件：
 
-<h3>1. 角色</h3>
-<p>在我们的 LaraBBS 里，将会出现以下角色：</p>
-<ul><li>游客 —— 没有登录的用户；</li>
-<li>用户 —— 注册用户，没有多余权限；</li>
-<li>管理员 —— 辅助超级管理员做社区内容管理；</li>
-<li>站长 —— 权限最高的用户角色。</li>
-</ul>
+### homestead edit
+加入对应修改，如下所示：
 
-<p>角色的权限从低到高，高权限的用户将包含权限低的用户权限。</p>
-<h3>2. 信息结构</h3>
-<p>主要信息有：</p>
-<ul><li>用户 —— 模型名称 User，论坛为 UGC 产品，所有内容都围绕用户来进行；</li>
-<li>话题 —— 模型名称 Topic，LaraBBS 论坛应用的最核心数据，有时我们称为帖子；</li>
-<li>分类 —— 模型名称 Category，话题的分类，每一个话题必须对应一个分类，分类由管理员创建；</li>
-<li>回复 —— 模型名称 Reply，针对某个话题的讨论，一个话题下可以有多个回复。</li>
-</ul>
+<pre><code>
+folders:
+    - map: ~/my-path/zustbbs/ # 你本地的项目目录地址
+      to: /home/vagrant/zustbbs
 
-<h3>3. 动作</h3>
-<p>角色和信息之间的互动称之为『动作』，动作主要由以下几个：</p>
-<ul><li>创建 Create</li>
-<li>查看 Read</li>
-<li>编辑 Update</li>
-<li>删除 Delete</li>
-</ul>
+sites:
+    - map: zustbbs.test
+      to: /home/vagrant/zustbbs/public
 
+databases:
+    - zustbbs
+</code></pre>
+### 应用修改
 
-<h2>用例</h2>
+修改完成后保存，然后执行以下命令应用配置信息修改：
 
-<h3>1. 游客</h3>
-<ul><li>游客可以查看所有话题列表；</li>
-<li>游客可以查看某个分类下的所有话题列表；</li>
-<li>游客可以按照发布时间和最后回复时间进行话题列表排序；</li>
-<li>游客可以查看单个话题内容；</li>
-<li>游客可以查看话题的所有回复；</li>
-<li>游客可以通过注册按钮创建用户（用户注册，游客专属）；</li>
-<li>游客可以查看用户的个人页面；</li>
-</ul>
+homestead provision
+随后请运行 homestead reload 进行重启。
 
-<h3>2. 用户</h3>
-<ul><li>用户可以在某个分类下发布话题；</li>
-<li>用户可以编辑自己发布的话题；</li>
-<li>用户可以删除自己发布的话题；</li>
-<li>用户可以回复所有话题；</li>
-<li>用户可以删除自己的回复；</li>
-<li>用户可以编辑自己的个人资料；</li>
-<li>用户可以接收话题新回复的通知。</li>
-</ul>
+### 安装扩展包依赖
+composer install
+### 生成配置文件
+cp .env.example .env
+你可以根据情况修改 .env 文件里的内容，如数据库连接、缓存、邮件设置等。
 
-<h3>3. 管理员</h3>
-<ul><li>管理员可以访问后台；</li>
-<li>管理员可以编辑所有的话题；</li>
-<li>管理员可以删除所有的回复；</li>
-<li>管理员可以编辑分类；</li>
-</ul>
+### 生成秘钥
+php artisan key:generate
+### 生成数据表及生成测试数据
+在 Homestead 的网站根目录下运行以下命令
 
-<h3>4. 站长</h3>
-<ul><li>站长可以编辑用户；</li>
-<li>站长可以删除用户；</li>
-<li>站长可以修改站点设置；</li>
-<li>站长可以删除分类；</li>
-</ul>
+$ php artisan migrate --seed
+初始的用户角色权限已使用数据迁移生成。
+
+### 配置 hosts 文件
+echo "192.168.10.10   zustbbs.test" | sudo tee -a /etc/hosts
+前端框架安装
+1). 安装 node.js
+
+直接去官网 https://nodejs.org/en/ 下载安装最新版本。
+
+2). 安装 Yarn
+
+请按照最新版本的 Yarn —— http://yarnpkg.cn/zh-Hans/docs/install
+
+3). 安装 Laravel Mix
+
+yarn install
+4). 编译前端内容
+
+// 运行所有 Mix 任务...
+npm run dev
+
+// 运行所有 Mix 任务并缩小输出..
+npm run production
+5). 监控修改并自动编译
+
+npm run watch
+
+// 在某些环境中，当文件更改时，Webpack 不会更新。如果系统出现这种情况，请考虑使用 watch-poll 命令：
+npm run watch-poll
