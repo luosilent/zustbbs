@@ -24,25 +24,24 @@
 ## 克隆源代码
 ### 克隆 larabbs 源代码到本地：
 
-<pre><code>git clone git@github.com:luosilent/zustbbs.git</code></pre>
+    git clone git@github.com:luosilent/zustbbs.git
  配置本地的 Homestead 环境
  运行以下命令编辑 Homestead.yaml 文件：
 
 ### homestead edit
 加入对应修改，如下所示：
 
-<pre><code>
-folders:
-    - map: ~/my-path/zustbbs/ # 你本地的项目目录地址
-      to: /home/vagrant/zustbbs
+    folders:
+        - map: ~/my-path/zustbbs/ # 你本地的项目目录地址
+          to: /home/vagrant/zustbbs
 
-sites:
-    - map: zustbbs.test
-      to: /home/vagrant/zustbbs/public
+    sites:
+        - map: zustbbs.test
+          to: /home/vagrant/zustbbs/public
 
-databases:
-    - zustbbs
-</code></pre>
+    databases:
+        - zustbbs
+
 ### 应用修改
 
 修改完成后保存，然后执行以下命令应用配置信息修改：
@@ -51,7 +50,7 @@ homestead provision
 随后请运行 homestead reload 进行重启。
 
 ### 安装扩展包依赖
-composer install
+    composer install
 ### 生成配置文件
 cp .env.example .env
 你可以根据情况修改 .env 文件里的内容，如数据库连接、缓存、邮件设置等。
@@ -61,7 +60,7 @@ php artisan key:generate
 ### 生成数据表及生成测试数据
 在 Homestead 的网站根目录下运行以下命令
 
-$ php artisan migrate --seed
+    $ php artisan migrate --seed
 初始的用户角色权限已使用数据迁移生成。
 
 ### 配置 hosts 文件
@@ -78,20 +77,19 @@ echo "192.168.10.10   zustbbs.test" | sudo tee -a /etc/hosts
 请按照最新版本的 Yarn —— http://yarnpkg.cn/zh-Hans/docs/install
 
 <li> 安装 Laravel Mix</li>
-
-<pre><code>yarn install</code></pre>
+    yarn install
 <li>编译前端内容</li>
 
  运行所有 Mix 任务...
-<pre><code>npm run dev</code></pre>
+    npm run dev
 
  运行所有 Mix 任务并缩小输出..
 <pre><code>npm run production</code></pre>
 <li> 监控修改并自动编译</li>
 
-<pre><code>npm run watch</code></pre>
+    npm run watch
 
-// 在某些环境中，当文件更改时，Webpack 不会更新。
+在某些环境中，当文件更改时，Webpack 不会更新。
 如果系统出现这种情况，请考虑使用 watch-poll 命令：
-<pre><code>npm run watch-poll</code></pre>
+    npm run watch-poll
 </ol>
